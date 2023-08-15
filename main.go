@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/gorilla/mux"
 )
 
 var db *sql.DB
@@ -44,10 +45,44 @@ func main() {
 		log.Fatal("Error initializing database tables:", err)
 	}
 
-	fmt.Println("Book Management API is running on port 8080...")
-	err = http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Print("Error starting server\n\n\n")
-		log.Fatal("Error starting server:", err)
+	router := mux.NewRouter()
+
+	router.HandleFunc("/books", booksHandler)                                                   // get and post
+	router.HandleFunc("/books/{bookid:[0-9]+}", booksPutAndDeleteHandler)                       // edit a book
+	router.HandleFunc("/collections", collectionsHandler)                                       // get and post (list collections, create collections)
+	router.HandleFunc("/collections/{collectionid:[0-9]+}", collectionsGetPostAndDeleteHandler) //get specific collection, add to collection, delete entire collection
+	router.HandleFunc("/collections/{collectionid:[0-9]+}", collectionsDeleteHandler)           // delete book from collection
+
+	server := &http.Server{
+		Addr:    ":8080",
+		Handler: router,
 	}
+
+	// Start the server
+	fmt.Println("Book Management API is running on port 8080...")
+	log.Fatal(server.ListenAndServe())
+}
+
+func welcomeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome to the Book Management API!")
+}
+
+func booksHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func booksPutAndDeleteHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func collectionsHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func collectionsGetPostAndDeleteHandler(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func collectionsDeleteHandler(w http.ResponseWriter, r *http.Request) {
+
 }
