@@ -281,6 +281,49 @@ ENDPOINTS:
         Error Handling:
             - 404 Not Found: If the specified collection is not found in the database.
 
+# STEP THREE: DESCRIBE THE DATABASE STRUCTURE
+
+The following is how I expect to store the data of this Book Management Software using MySQL. 
+
+BOOKS TABLE
+
+CREATE TABLE  books (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    published_date DATE,
+    edition VARCHAR(50),
+    description TEXT,
+    genre VARCHAR(100),
+    UNIQUE (title, author)
+)
+
+COLLECTIONS TABLE 
+
+This table stores the books in the system. Each book has a unique identifier. It felt necessary to make (title, author) unique because there should never be a duplication of the same book but with different information. 
+
+CREATE TABLE collections (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
+)
+
+This table stores the collections. All that is needed to be known is the unique identifier for each of these as well as the name of the collection.
+
+COLLECTION_BOOKS TABLE
+
+CREATE TABLE collection_books (
+    collection_id INT,
+    book_title VARCHAR(255),
+    book_author VARCHAR(255),
+    FOREIGN KEY (collection_id) REFERENCES collections(id),
+    FOREIGN KEY (book_title, book_author) REFERENCES books(title, author)
+)
+
+This table stores the many-to-many relationship between books and collections. This will show how each book is a member of however many collections.
+
+
+
+
 
 
 
