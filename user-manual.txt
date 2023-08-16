@@ -22,6 +22,50 @@ To run and test this software.
 You need to have Go installed on your device. You can download Go here:
 [https://golang.org/dl/]
 
+----------------------------------------------------
+
+If having installed Go, and you still receive errors such as "command not found: Go"
+after attempting to run, this may be of your help:
+
+If you've downloaded and installed Go but are still getting the "command not found: go" error, it's possible that the Go binary directory is not included in your system's `PATH` environment variable. 
+
+Here's what you can do to resolve this issue:
+
+1. **Check Installation Directory:**
+   Make sure you've installed Go in a directory that's included in your system's `PATH`. By default, Go is often installed in `/usr/local/go` on Unix-like systems (including macOS and Linux) or `C:\Go` on Windows. If you've installed Go in a different location, you'll need to adjust the steps accordingly.
+
+2. **Update PATH Variable (Unix-like Systems):**
+   If you're on a Unix-like system (macOS or Linux), you need to add the Go binary directory to your `PATH`. You can do this by modifying the `~/.bashrc`, `~/.bash_profile`, or `~/.zshrc` file (depending on the shell you're using). Add the following line to the appropriate file:
+
+   ```sh
+   export PATH=$PATH:/usr/local/go/bin
+   ```
+
+   After adding the line, save the file and then run the following command in the terminal to apply the changes:
+
+   ```sh
+   source ~/.bashrc
+   ```
+
+   Replace `~/.bashrc` with the appropriate file name if you're using a different shell configuration file.
+
+3. **Update PATH Variable (Windows):**
+   If you're on Windows, you'll need to update the `PATH` environment variable to include the Go binary directory. Here's how:
+
+   - Open the Start Menu and search for "Environment Variables."
+   - Click on "Edit the system environment variables."
+   - In the System Properties window, click the "Environment Variables" button.
+   - Under the "System variables" section, find the `Path` variable and click "Edit."
+   - Click "New" and add the path to your Go binary directory (e.g., `C:\Go\bin`).
+   - Click OK on each window to save the changes.
+
+4. **Restart Terminal or Command Prompt:**
+   After updating the `PATH` environment variable, close and reopen your terminal or command prompt for the changes to take effect.
+
+Once you've updated the `PATH` environment variable, you should be able to run the `go` command without any issues. If you're still encountering problems, double-check that the installation path is correct and that you've saved and applied the changes to the environment variables.
+
+----------------------------------------------------
+
 
 Then you need to establish a mySQL connection on your
 local device. 
