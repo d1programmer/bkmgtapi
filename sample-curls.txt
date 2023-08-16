@@ -1,0 +1,39 @@
+SAMPLE CURL REQUESTS
+GET 
+
+#List all books
+curl -i http://localhost:8080/books  
+
+# List all collections 
+curl -i http://localhost:8080/collections
+
+POST
+
+# Add book to system
+curl -i -X POST -H "Content-Type: application/json" -d '{
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "published_date": "1925-04-10",
+  "edition": "1st",
+  "description": "A classic novel about the Jazz Age in America.",
+  "genre": "Fiction"
+}' http://localhost:8080/books    
+
+# Create a collection
+curl -i -X POST -H "Content-Type: application/json" -d '{
+  "name": "Fiction"
+}' http://localhost:8080/collections
+
+# Add to a collection
+curl -i -X POST -H "Content-Type: application/json" -d '{
+  "bookid": 1
+}' http://localhost:8080/collections/1
+
+
+DELETE
+
+# Delete book from system
+curl -i -X DELETE http://localhost:8080/books/1
+
+# Delete collection from system
+curl -i -X DELETE http://localhost:8080/collections/1

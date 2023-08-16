@@ -3,7 +3,7 @@
 The following is an expected user experience for the book management software, including the CLI Commands and their options.
 The Command Line Interface will allow for users to be able to utilize create, read, update, and delete (CRUD) operations to manage a simple book management software.
 
-The software will allow users to pass in command line prompts to update and modify the Book Management Software. Following the execution of a prompt, the API will respond with a status code and a description of what went right* [ or wrong (>.<) ]*
+The software will allow users to pass in command line prompts to update and modify the Book Management Software. Following the execution of a prompt, the API will respond with a status code and a description of what went right *[ or wrong (>.<) ]*
 The API operations and details regarding them will be listed in the user-manual.txt file which is located in this repository. This manual will provide commands, optional flags, and examples of how to properly use them along with a response.
 
 Users will be able to:
@@ -93,9 +93,6 @@ ENDPOINTS:
             - The API will return a list of book objects in JSON format.
             - Each book object contains an `id`, `title`, `author`, `published_date`, `edition`, `description`, and `genre`.
 
-        Error Handling:
-            - 404 Not Found: If there are no books in the system.
-
     - Edit a book
 
         URL: `books/:book_id`
@@ -144,7 +141,9 @@ ENDPOINTS:
             - Provide the book_id in the URL to specify the book you want to delete.
         
         Error Handling:
+            - 400 Bad Request: If the request body is missing or holds improper information.
             - 404 Not Found: If the specified book is not found in the database.
+        
 
 2. Collection Management
 
@@ -185,9 +184,6 @@ ENDPOINTS:
         Notes: 
             - The API will return a list of collection objects in JSON format.
             - Each colleciton object contains an `id`, and `name`.
-
-        Error Handling:
-            - 404 Not Found: If there are no books in the system.
 
     - List books in a collection
 
@@ -236,13 +232,11 @@ ENDPOINTS:
         Method: POST
         Request Body: 
         {
-            "collection_id": 1,
-            "book_id": 1
+            "bookid": 1
         }
         Response:
         HTTP Status: 201 Created
-        {
-            "message": "Book successfully added to collection.", 
+        { 
             "collection_id": 1,
             "book_id": 1
         }
@@ -312,11 +306,8 @@ This table stores the collections. All that is needed to be known is the unique 
 COLLECTION_BOOKS TABLE
 
 CREATE TABLE collection_books (
-    collection_id INT,
-    book_title VARCHAR(255),
-    book_author VARCHAR(255),
-    FOREIGN KEY (collection_id) REFERENCES collections(id),
-    FOREIGN KEY (book_title, book_author) REFERENCES books(title, author)
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE
 )
 
 This table stores the many-to-many relationship between books and collections. This will show how each book is a member of however many collections.

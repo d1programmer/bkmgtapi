@@ -1,0 +1,40 @@
+Thank you for continuing me to this round of the hiring process.
+I hope that you all find my implementation of this API to be an adequate
+representation of my skills and one that can be of you all's use on the
+LXD Team at Canonical.
+
+
+This user manual is meant to show the use cases in which I've implemented this
+Book Management Software. 
+
+With this, you should be able to 
+    - Add books to the system
+    - Delete books from the system
+    - Create collections in the system
+    - Add books to collections
+    - Delete entire collections
+
+I feel that these show the gist of what would be going on in the API. Other actions
+are kind of a mix of the concepts being used in these. 
+
+To run and test this software. You first need to establish a mySQL connection on your
+local device. 
+
+You can download mySQL here [https://dev.mysql.com/downloads/mysql/] if you have not already. 
+It is important to replace the blurb in connectDB() [in db.go] with your local username
+and password for SQL.
+Here [https://docs.oracle.com/en/java/java-components/advanced-management-console/2.27/install-guide/mysql-database-installation-and-configuration-advanced-management-console.html#GUID-12323233-07E3-45C2-B77A-F35B3BBA6592] 
+is a link that will explain that in further detail.
+(usually username is the user associated with your device i.e. the name that pops up on terminal
+beside your command prompt, and password is the root password that you set when you first download mySQL)
+
+Now that it is all set up. Simply run: `go run main.go db.go` and the system should start.
+
+I provided a sample-curls.txt file for some of the curl requests you can put in to test this.
+
+Once again, I hope this is a great representation of my skills, and I look forward to
+hearing from you all!
+
+Best,
+
+Desmond T.
