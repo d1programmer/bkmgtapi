@@ -17,11 +17,17 @@ With this, you should be able to
 I feel that these show the gist of what would be going on in the API. Other actions
 are kind of a mix of the concepts being used in these. 
 
-To run and test this software. You first need to establish a mySQL connection on your
+To run and test this software. 
+
+You need to have Go installed on your device. You can download Go here:
+[https://golang.org/dl/]
+
+
+Then you need to establish a mySQL connection on your
 local device. 
 
 You can download mySQL here [https://dev.mysql.com/downloads/mysql/] if you have not already. 
-It is important to replace the blurb in connectDB() [in db.go] with your local username
+It is important to replace the `connectionString` in connectDB() [in db.go] with your local username
 and password for SQL.
 Here [https://docs.oracle.com/en/java/java-components/advanced-management-console/2.27/install-guide/mysql-database-installation-and-configuration-advanced-management-console.html#GUID-12323233-07E3-45C2-B77A-F35B3BBA6592] 
 is a link that will explain that in further detail.
@@ -29,6 +35,8 @@ is a link that will explain that in further detail.
 beside your command prompt, and password is the root password that you set when you first download mySQL)
 
 Now that it is all set up. Simply run: `go run main.go db.go` and the system should start.
+
+Open up a separate terminal window and input curl commands to make changes to the Book Management Software.
 
 I provided a sample-curls.txt file for some of the curl requests you can put in to test this.
 
